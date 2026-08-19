@@ -2,6 +2,9 @@ import { State, getCPS, getClick, getRigCost } from './state.js';
 import { Save } from './save.js';
 import { UI } from './ui.js';
 import { Events } from './events.js';
+import { Menu } from './menu.js';
+
+Menu.init();
 
 export const Game = {
   started:false,
