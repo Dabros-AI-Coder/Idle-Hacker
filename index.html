@@ -8,12 +8,23 @@
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/menu-assets.css">
 </head>
 <body>
 <canvas id="matrix"></canvas>
 
 <main class="main-menu" id="mainMenu">
   <div class="menu-atmosphere" aria-hidden="true"></div>
+  <div class="menu-art" aria-hidden="true">
+    <img class="menu-art-layer menu-art-glow" src="assets/menu/glow.svg" alt="">
+    <img class="menu-art-layer menu-art-window" src="assets/menu/window-grid.svg" alt="">
+    <img class="menu-art-layer menu-art-laptop" src="assets/menu/laptop.svg" alt="">
+    <img class="menu-art-layer menu-art-router" src="assets/menu/router.svg" alt="">
+    <img class="menu-art-layer menu-art-mug" src="assets/menu/mug.svg" alt="">
+    <div class="menu-art-layer menu-art-dust"></div>
+    <div class="menu-art-layer menu-art-scan"></div>
+    <div class="menu-art-layer menu-art-vignette"></div>
+  </div>
   <div class="menu-top-status"><span class="status-dot"></span> SYSTEM ONLINE</div>
   <div class="menu-server"><small>SERVER TIME</small><strong id="menuServerTime">00:00:00</strong><span class="status-dot"></span></div>
   <section class="menu-left">
@@ -33,7 +44,6 @@
     <section class="menu-system-panel"><div class="menu-panel-title"><span>// SYSTEM STATUS</span><b>LIVE</b></div><div class="menu-emblem">⌁</div><div class="system-check"><span></span><label>Network:</label><strong>ONLINE</strong></div><div class="system-check"><span></span><label>Tor:</label><strong>CONNECTED</strong></div><div class="system-check"><span></span><label>Encryption:</label><strong>ACTIVE</strong></div><div class="system-check"><span></span><label>Firewall:</label><strong>BYPASSED</strong></div><div class="menu-map-lines" aria-hidden="true"></div></section>
     <section class="intel-panel"><div class="menu-panel-title"><span>• LATEST INTEL</span><b>LIVE FEED</b></div><div class="intel-alert"><span class="intel-dot"></span><div><strong>ZERO-DAY SCANNER</strong><small>Network intelligence feed standing by.</small></div><time>READY</time></div><button id="intelBtn">VIEW INTEL FEED <span>›</span></button></section>
   </aside>
-  <div class="menu-desk" aria-hidden="true"><div class="menu-laptop"><span>&gt;_</span><i></i><i></i><i></i></div><div class="menu-mug">CODE.<br>EXPLOIT.<br>PROFIT.</div><div class="menu-router"><i></i><i></i><i></i><i></i></div></div>
   <div class="menu-socials" aria-label="Community links"><button title="Discord">◉</button><button title="GitHub">⌘</button><button title="X">X</button><button title="Website">◎</button></div>
   <footer class="menu-footer">[ USER: <strong>GHOST</strong> ] &nbsp;&nbsp; [ REPUTATION: <strong id="menuRep">SCRIPT KIDDIE</strong> ] &nbsp;&nbsp; [ UPTIME: <strong id="menuUptime">00:00:00</strong> ]</footer>
 </main>
@@ -49,7 +59,7 @@
       <article class="panel-card revenue-card"><div class="panel-heading"><span>REVENUE STREAMS</span><b id="potential"></b></div><div class="revenue-row"><span>◈ PASSIVE INCOME</span><strong id="passiveIncome">$0/s</strong></div><div class="revenue-row"><span>◈ ACTIVE OPERATIONS</span><strong id="activeIncome">$0</strong></div><div class="revenue-row"><span>◈ CONTRACTS</span><strong id="contractIncome">$0</strong></div><div class="revenue-total"><span>TOTAL</span><strong id="totalIncome">$0/s</strong></div></article>
       <article class="panel-card trace-card"><div class="panel-heading"><span>TRACE LEVEL</span><b id="traceLabel">CLEAN</b></div><div class="trace-chart"><div class="chart-grid"></div><div class="trace-line"></div></div><div class="trace-scale"><span>0–20% CLEAN</span><span>21–40% SUSPICIOUS</span><span>41–60% MONITORED</span><span>61–80% HUNTED</span><span>81–100% CRITICAL</span></div><button class="clean-btn" id="cleanBtn">CLEAN LOGS <span>$10,000</span></button></article>
       <article class="panel-card events-card"><div class="panel-heading"><span>RECENT EVENTS</span><b>LIVE FEED</b></div><div class="event-list"><div class="event warning-event"><span class="event-icon">!</span><div><strong>SECURITY SWEEP</strong><small>Global security monitoring active.</small></div><time>--:--</time></div><div class="event rare-event"><span class="event-icon">◇</span><div><strong>ZERO-DAY SCANNER</strong><small>Waiting for vulnerability event.</small></div><time>READY</time></div><div class="event info-event"><span class="event-icon">⌁</span><div><strong>NETWORK STATUS</strong><small>Infrastructure operating normally.</small></div><time>NOW</time></div><div class="event success-event"><span class="event-icon">+</span><div><strong>HARDWARE MARKET</strong><small>Rig upgrades available.</small></div><time>OPEN</time></div></div></article>
-    </section></main><nav class="mobile-nav"><button class="tab active" data-tab="dashboard">⌂<small>DASHBOARD</small></button><button class="tab" data-tab="targets">◉<small>TARGETS</small></button><button class="tab" data-tab="operations">⌁<small>OPS</small></button><button class="tab" data-tab="rigs">▣<small>RIGS</small></button><button class="tab" data-tab="contracts">◇<small>CONTRACTS</small></button></nav></section><div class="vuln" id="vuln">[ VULNERABILITY FOUND ]</div>
+    </section></main></section><nav class="mobile-nav"><button class="tab active" data-tab="dashboard">⌂<small>DASHBOARD</small></button><button class="tab" data-tab="targets">◉<small>TARGETS</small></button><button class="tab" data-tab="operations">⌁<small>OPS</small></button><button class="tab" data-tab="rigs">▣<small>RIGS</small></button><button class="tab" data-tab="contracts">◇<small>CONTRACTS</small></button></nav><div class="vuln" id="vuln">[ VULNERABILITY FOUND ]</div>
 </div>
 <script type="module">
 import { Game } from './js/game.js';
