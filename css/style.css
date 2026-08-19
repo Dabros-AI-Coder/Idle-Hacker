@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'JetBrains Mono',monospace;-webkit-tap-highlight-color:transparent}
+body{background:#000;color:#00ff41;min-height:100vh;overflow-x:hidden;user-select:none}
+#matrix{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:0.12}
+.top{position:sticky;top:0;background:rgba(0,0,0,0.9);border-bottom:1px solid #00ff41;padding:10px;backdrop-filter:blur(12px);z-index:10}
+.cash{font-size:28px;font-weight:700}
+.sub{font-size:11px;color:#00aa2a;display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.bar-wrap{height:6px;background:#111;border:1px solid #003b00;margin-top:8px}
+.bar{height:100%;width:0%;transition:width .3s}
+.bar.trace{background:linear-gradient(90deg,#ff0033,#ff6600)}
+.center{display:flex;flex-direction:column;align-items:center;padding:24px 15px}
+.hack-btn{width:170px;height:170px;border-radius:50%;border:3px solid #00ff41;background:radial-gradient(circle,#001a00,#000);color:#00ff41;font-size:22px;font-weight:700;box-shadow:0 0 30px rgba(0,255,65,.4)}
+.hack-btn:active{transform:scale(.92)}
+.combo{margin-top:12px;height:24px;color:#aaff00;font-size:18px}
+.overclock{margin-top:14px;padding:12px 24px;background:#000;border:2px solid #00ff41;color:#00ff41;font-weight:700;letter-spacing:1px}
+.overclock.active{background:#00ff41;color:#000;box-shadow:0 0 20px #00ff41}
+.overclock.cool{opacity:.5;border-color:#555;color:#555}
+.actions{margin-top:12px;display:flex;gap:8px}
+.small{background:#111;border:1px solid #ff6600;color:#ff6600;padding:6px 10px;font-size:11px}
+.small.danger{background:#ff0033;border-color:#ff0033;color:#fff}
+.tabs{position:fixed;bottom:0;left:0;right:0;display:flex;background:#000;border-top:1px solid #00ff41;z-index:20}
+.tab{flex:1;padding:14px;text-align:center;font-size:12px;cursor:pointer;border-right:1px solid #111}
+.tab.active{background:#00ff41;color:#000;font-weight:700}
+.panel{padding:15px;padding-bottom:90px;max-width:600px;margin:0 auto;width:100%}
+.card{background:rgba(0,255,65,.05);border:1px solid rgba(0,255,65,.3);padding:12px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.card button{background:#00ff41;color:#000;border:none;padding:8px 14px;font-weight:700}
+.card button:disabled{background:#222;color:#555}
+.log{font-size:10px;color:#00aa2a;height:80px;overflow:hidden;border-top:1px solid #111;padding:6px}
+.vuln{position:fixed;top:42%;left:50%;transform:translate(-50%,-50%);background:#ffcc00;color:#000;padding:18px 28px;border:3px solid #000;font-weight:800;font-size:18px;z-index:100;display:none;box-shadow:0 0 40px #ffcc00}
+.float{position:absolute;color:#00ff41;font-weight:700;pointer-events:none;animation:floatUp .8s forwards}
+@keyframes floatUp{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-60px);opacity:0}}
+.rank{color:#aaff00}
