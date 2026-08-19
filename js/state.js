@@ -1,3 +1,11 @@
+export const RIG_DEFAULTS = [
+  { id:'laptop', name:'Skid Laptop', baseCost:25, growth:1.15, prod:0.2 },
+  { id:'phishing', name:'Phishing Kit', baseCost:150, growth:1.16, prod:1.5 },
+  { id:'botnet', name:'Botnet Node', baseCost:1000, growth:1.17, prod:12 },
+  { id:'zeroday', name:'Zero-Day', baseCost:10000, growth:1.18, prod:110 },
+  { id:'quantum', name:'Quantum Rig', baseCost:100000, growth:1.20, prod:900 },
+];
+
 export const State = {
   cash: 0,
   lifetime: 0,
@@ -9,13 +17,7 @@ export const State = {
   overclockActive: false,
   overclockCd: 0,
   boostTime: 0,
-  rigs: [
-    { id:'laptop', name:'Skid Laptop', baseCost:15, cost:15, prod:0.2, count:0 },
-    { id:'phishing', name:'Phishing Kit', baseCost:150, cost:150, prod:1.5, count:0 },
-    { id:'botnet', name:'Botnet Node', baseCost:2000, cost:2000, prod:12, count:0 },
-    { id:'zeroday', name:'Zero-Day', baseCost:25000, cost:25000, prod:110, count:0 },
-    { id:'quantum', name:'Quantum Rig', baseCost:300000, cost:300000, prod:900, count:0 },
-  ],
+  rigs: RIG_DEFAULTS.map(rig=>({ ...rig, cost:rig.baseCost, count:0 })),
   upgrades: [
     { id:'click', name:'Better Scripts', desc:'Click x3', cost:500, bought:false, mult:3, req:0 },
     { id:'proxy', name:'Proxy Chain', desc:'Global x2.5', cost:5000, bought:false, mult:2.5, req:1 },
@@ -28,6 +30,10 @@ export const State = {
   ],
   tab: 'rigs'
 };
+
+export function getRigCost(rig){
+  return Math.floor(rig.baseCost * Math.pow(rig.growth, rig.count));
+}
 
 export function getCPS(){
   let base = 0;

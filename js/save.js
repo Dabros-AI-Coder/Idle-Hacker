@@ -1,4 +1,4 @@
-import { State, getCPS } from './state.js';
+import { State, RIG_DEFAULTS, getCPS, getRigCost } from './state.js';
 
 export const Save = {
   key: 'hackerTycoon_modular',
@@ -13,7 +13,13 @@ export const Save = {
       const p = JSON.parse(raw);
       Object.assign(State, p);
       // restore rigs/upgrades if saved partially
-      if(p.rigs) State.rigs = p.rigs;
+      if(p.rigs){
+        State.rigs = RIG_DEFAULTS.map((rig, i)=>{
+          const saved = p.rigs[i] || {};
+          const current = { ...rig, count:saved.count || 0 };
+          return { ...current, cost:getRigCost(current) };
+        });
+      }
       if(p.upgrades) State.upgrades = p.upgrades;
       if(p.contracts) State.contracts = p.contracts;
       // offline

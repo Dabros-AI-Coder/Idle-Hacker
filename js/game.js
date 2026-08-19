@@ -1,4 +1,4 @@
-import { State, getCPS, getClick } from './state.js';
+import { State, getCPS, getClick, getRigCost } from './state.js';
 import { Save } from './save.js';
 import { UI } from './ui.js';
 import { Events } from './events.js';
@@ -48,7 +48,7 @@ export const Game = {
   buyRig(i){
     const r=State.rigs[i];
     if(State.cash>=r.cost){
-      State.cash-=r.cost; r.count++; r.cost=Math.floor(r.baseCost*Math.pow(1.25,r.count));
+      State.cash-=r.cost; r.count++; r.cost=getRigCost(r);
       State.trace+=0.6; UI.log('bought '+r.name); UI.update();
     }
   },
