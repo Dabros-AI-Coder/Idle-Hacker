@@ -15,6 +15,9 @@ body{background:#000;color:#00ff41;min-height:100vh;overflow-x:hidden;user-selec
 .start-btn{width:100%;padding:16px;background:#00ff41;color:#000;border:2px solid #00ff41;font:700 14px 'JetBrains Mono',monospace;letter-spacing:2px;cursor:pointer;box-shadow:0 0 18px rgba(0,255,65,.35);transition:background .18s,color .18s,box-shadow .18s}
 .start-btn span{animation:blink 1s steps(2,end) infinite}
 .start-btn:hover{background:#aaff00;box-shadow:0 0 30px rgba(170,255,0,.55)}
+.install-btn{width:100%;margin-top:10px;padding:12px;background:transparent;color:#00ff41;border:1px solid #007d22;font:700 11px 'JetBrains Mono',monospace;letter-spacing:1px;cursor:pointer;transition:border-color .18s,color .18s}
+.install-btn:hover{border-color:#00ff41;color:#aaff00}
+.install-btn[hidden]{display:none}
 .menu-status{min-height:12px;margin-top:18px;color:#007d22;font-size:9px;letter-spacing:1px}
 @keyframes menuBoot{from{opacity:0;transform:translateY(14px);filter:brightness(2)}to{opacity:1;transform:translateY(0);filter:brightness(1)}}
 @keyframes blink{50%{opacity:0}}

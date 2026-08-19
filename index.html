@@ -17,6 +17,7 @@
     <div class="menu-rule"><span></span> BLACKNET OPERATIONS <span></span></div>
     <p class="menu-copy">Build your rig. Stay invisible.<br>Own the network.</p>
     <button class="start-btn" id="startBtn">START SESSION <span>_</span></button>
+    <button class="install-btn" id="installBtn" hidden>INSTALL AS APP</button>
     <div class="menu-status" id="menuStatus">NO ACTIVE SESSION FOUND</div>
   </div>
 </main>
@@ -61,6 +62,27 @@ import { Game } from './js/game.js';
 import { UI } from './js/ui.js';
 window.Game = Game;
 UI.initMatrix();
+
+if('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js');
+
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt', (event)=>{
+  event.preventDefault();
+  deferredPrompt=event;
+  installBtn.hidden=false;
+});
+installBtn.addEventListener('click', async()=>{
+  if(!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt=null;
+  installBtn.hidden=true;
+});
+window.addEventListener('appinstalled', ()=>{
+  installBtn.hidden=true;
+  document.getElementById('menuStatus').textContent='APP INSTALLED // READY TO RUN';
+});
 
 const hasSave = Boolean(localStorage.getItem('hackerTycoon_modular'));
 if(hasSave) document.getElementById('menuStatus').textContent = 'SAVED SESSION DETECTED // READY TO RESUME';
