@@ -1,10 +1,10 @@
 {
-  "name": "Hacker Tycoon",
-  "short_name": "Hacker",
+  "name": "Idle Hacker",
+  "short_name": "Idle Hacker",
   "start_url": "./index.html",
   "display": "standalone",
   "scope": "./",
-  "background_color": "#000000",
-  "theme_color": "#00ff41",
+  "background_color": "#050807",
+  "theme_color": "#35ff77",
   "icons": [{ "src": "assets/icon.svg", "sizes": "192x192 512x512", "type": "image/svg+xml" }]
 }
