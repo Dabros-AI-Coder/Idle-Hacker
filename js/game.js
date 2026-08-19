@@ -4,7 +4,10 @@ import { UI } from './ui.js';
 import { Events } from './events.js';
 
 export const Game = {
+  started: false,
   init(){
+    if(this.started) return;
+    this.started=true;
     Save.load();
     this.bind();
     this.loop();

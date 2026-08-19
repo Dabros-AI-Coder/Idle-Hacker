@@ -10,6 +10,18 @@
 </head>
 <body>
 <canvas id="matrix"></canvas>
+<main class="main-menu" id="mainMenu">
+  <div class="menu-shell">
+    <div class="menu-kicker">// SECURE CHANNEL ESTABLISHED</div>
+    <h1>HACKER<br><span>TYCOON</span></h1>
+    <div class="menu-rule"><span></span> BLACKNET OPERATIONS <span></span></div>
+    <p class="menu-copy">Build your rig. Stay invisible.<br>Own the network.</p>
+    <button class="start-btn" id="startBtn">START SESSION <span>_</span></button>
+    <div class="menu-status" id="menuStatus">NO ACTIVE SESSION FOUND</div>
+  </div>
+</main>
+
+<div class="game-screen" id="gameScreen" hidden>
 <div class="top">
   <div class="cash" id="cash">$0</div>
   <div class="sub">
@@ -42,13 +54,22 @@
 </div>
 
 <div class="vuln" id="vuln">[BUG] VULN FOUND!</div>
+</div>
 
 <script type="module">
 import { Game } from './js/game.js';
 import { UI } from './js/ui.js';
 window.Game = Game;
-Game.init();
 UI.initMatrix();
+
+const hasSave = Boolean(localStorage.getItem('hackerTycoon_modular'));
+if(hasSave) document.getElementById('menuStatus').textContent = 'SAVED SESSION DETECTED // READY TO RESUME';
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  document.getElementById('mainMenu').classList.add('closing');
+  document.getElementById('gameScreen').hidden = false;
+  Game.init();
+  setTimeout(()=> document.getElementById('mainMenu').hidden = true, 280);
+});
 </script>
 </body>
 </html>
