@@ -1,4 +1,3 @@
-import { Game } from './game.js';
 import { State } from './state.js';
 import { Save } from './save.js';
 
@@ -49,7 +48,7 @@ const Menu = {
     this.closeModal();
     const menu=document.getElementById('mainMenu');menu?.classList.add('closing');
     document.getElementById('gameScreen').hidden=false;
-    Game.init();
+    window.Game?.init();
     setTimeout(()=>{if(menu)menu.hidden=true;},280);
   },
   newGame(){
