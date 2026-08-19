@@ -1,5 +1,5 @@
-const CACHE_NAME='idle-hacker-v6';
-const APP_FILES=['./','./index.html','./css/style.css','./css/menu.css','./css/menu-assets.css','./js/events.js','./js/game.js','./js/save.js','./js/state.js','./js/ui.js','./manifest.json','./assets/icon.svg','./assets/menu-background.svg','./assets/menu/window-grid.svg','./assets/menu/laptop.svg','./assets/menu/router.svg','./assets/menu/mug.svg','./assets/menu/glow.svg'];
+const CACHE_NAME='idle-hacker-v7';
+const APP_FILES=['./','./index.html','./css/style.css','./css/menu.css','./css/menu-assets.css','./css/menu-systems.css','./js/events.js','./js/game.js','./js/menu.js','./js/save.js','./js/state.js','./js/ui.js','./manifest.json','./assets/icon.svg','./assets/menu-background.svg','./assets/menu/window-grid.svg','./assets/menu/laptop.svg','./assets/menu/router.svg','./assets/menu/mug.svg','./assets/menu/glow.svg'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(
@@ -18,10 +18,10 @@ self.addEventListener('activate',event=>{
 });
 
 self.addEventListener('fetch',event=>{
-  if(event.request.method!=='GET') return;
+  if(event.request.method!=='GET')return;
   const url=new URL(event.request.url);
-  if(url.origin!==self.location.origin) return;
-  const isAppCode=/\.(html|css|js|json)$/i.test(url.pathname) || url.pathname.endsWith('/');
+  if(url.origin!==self.location.origin)return;
+  const isAppCode=/\.(html|css|js|json)$/i.test(url.pathname)||url.pathname.endsWith('/');
   if(isAppCode){
     event.respondWith(
       fetch(event.request,{cache:'no-store'})
