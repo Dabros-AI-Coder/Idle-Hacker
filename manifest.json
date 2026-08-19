@@ -1,0 +1,9 @@
+{
+  "name": "Hacker Tycoon",
+  "short_name": "Hacker",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ff41",
+  "icons": [{ "src": "assets/icon.png", "sizes": "512x512", "type": "image/png" }]
+}
