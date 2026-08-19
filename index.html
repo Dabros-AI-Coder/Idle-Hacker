@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="theme-color" content="#000000">
-<title>HACKER TYCOON</title>
+<meta name="theme-color" content="#050807">
+<title>IDLE HACKER</title>
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <canvas id="matrix"></canvas>
+
 <main class="main-menu" id="mainMenu">
   <div class="menu-shell">
     <div class="menu-kicker">// SECURE CHANNEL ESTABLISHED</div>
-    <h1>HACKER<br><span>TYCOON</span></h1>
+    <h1>IDLE <span>HACKER</span></h1>
     <div class="menu-rule"><span></span> BLACKNET OPERATIONS <span></span></div>
-    <p class="menu-copy">Build your rig. Stay invisible.<br>Own the network.</p>
+    <p class="menu-copy">Build your infrastructure. Stay invisible.<br>Own the network.</p>
     <button class="start-btn" id="startBtn">START SESSION <span>_</span></button>
     <button class="install-btn" id="installBtn" hidden>INSTALL AS APP</button>
     <div class="menu-status" id="menuStatus">NO ACTIVE SESSION FOUND</div>
@@ -23,38 +24,120 @@
 </main>
 
 <div class="game-screen" id="gameScreen" hidden>
-<div class="top">
-  <div class="cash" id="cash">$0</div>
-  <div class="sub">
-    <span id="cps">0/s</span>
-    <span>TRACE <span id="trace">0%</span></span>
-    <span>REP <span id="rep">0</span></span>
-    <span class="rank" id="rank">Script Kiddie</span>
-    <span id="potential"></span>
-  </div>
-  <div class="bar-wrap"><div class="bar trace" id="traceBar"></div></div>
-</div>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">IDLE</div>
+      <strong>HACKER</strong>
+      <span>v2.0.0 // BLACKNET</span>
+    </div>
+    <nav class="side-nav" aria-label="Main navigation">
+      <button class="tab active" data-tab="dashboard"><span>⌂</span> DASHBOARD</button>
+      <button class="tab" data-tab="targets"><span>◉</span> TARGETS</button>
+      <button class="tab" data-tab="operations"><span>⌁</span> OPERATIONS</button>
+      <button class="tab" data-tab="rigs"><span>▣</span> INFRASTRUCTURE</button>
+      <button class="tab" data-tab="contracts"><span>◇</span> CONTRACTS</button>
+      <button class="tab" data-tab="upgrades"><span>✦</span> UPGRADES</button>
+      <button class="tab" data-tab="reputation"><span>◆</span> REPUTATION</button>
+      <button class="tab" data-tab="logs"><span>›_</span> LOGS</button>
+    </nav>
+    <div class="sidebar-status">
+      <span class="status-dot"></span> SYSTEM ONLINE
+      <small>LOCAL SESSION</small>
+    </div>
+  </aside>
 
-<div class="center">
-  <button class="hack-btn" id="hackBtn">HACK</button>
-  <div class="combo" id="combo"></div>
-  <button class="overclock" id="ocBtn">OVERCLOCK</button>
-  <div class="actions">
-    <button class="small" onclick="Game.cleanLogs()">CLEAN -$10k</button>
-    <button class="small danger" onclick="Game.doRaid()">FBI RAID</button>
-  </div>
-</div>
+  <section class="app-shell">
+    <header class="topbar">
+      <div class="mobile-brand"><span>IDLE</span> HACKER</div>
+      <div class="stat-card money-stat"><small>CREDITS</small><strong id="cash">$0</strong><em id="cps">+$0/s</em></div>
+      <div class="stat-card trace-stat"><small>TRACE LEVEL</small><strong id="trace">0%</strong><em id="traceState">CLEAN</em></div>
+      <div class="stat-card rep-stat"><small>REPUTATION</small><strong id="rank">SCRIPT KIDDIE</strong><em id="rep">0 REP</em></div>
+      <div class="stat-card uptime-stat"><small>SERVER TIME</small><strong id="serverTime">00:00:00</strong><em><span class="status-dot"></span> ONLINE</em></div>
+    </header>
 
-<div class="panel" id="panel"></div>
-<div class="log" id="log"></div>
+    <div class="mobile-trace"><div class="bar trace" id="traceBar"></div></div>
 
-<div class="tabs">
-  <div class="tab active" data-tab="rigs">RIGS</div>
-  <div class="tab" data-tab="contracts">CONTRACTS</div>
-  <div class="tab" data-tab="upgrades">UPGRADES</div>
-</div>
+    <main class="content" id="content">
+      <section class="dashboard-grid">
+        <article class="panel-card active-target-card">
+          <div class="panel-heading"><span>ACTIVE TARGET</span><b id="targetStatus">RECON READY</b></div>
+          <div class="target-main">
+            <div class="target-visual"><div class="target-grid"></div><div class="target-scan"></div><span>NET<br>NODE</span></div>
+            <div class="target-info">
+              <div class="eyebrow">FINANCIAL INSTITUTION // PRIORITY 03</div>
+              <h1>NEONBANK</h1>
+              <div class="target-metrics">
+                <div><small>SECURITY LEVEL</small><div class="seg-bar security"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><strong>72%</strong></div>
+                <div><small>POTENTIAL PAYOUT</small><strong class="accent" id="targetPayout">$500</strong></div>
+                <div><small>TRACE RISK</small><strong class="warning">MEDIUM</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="target-actions">
+            <button class="action-btn" id="reconBtn">RECON</button>
+            <button class="action-btn primary" id="hackBtn">EXPLOIT</button>
+            <button class="action-btn danger" id="abortBtn">ABORT</button>
+          </div>
+        </article>
 
-<div class="vuln" id="vuln">[BUG] VULN FOUND!</div>
+        <article class="panel-card network-card">
+          <div class="panel-heading"><span>NETWORK OVERVIEW</span><b>LIVE</b></div>
+          <div class="network-map"><div class="map-lines"></div><span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span><span class="node n5"></span></div>
+          <div class="network-summary"><div><small>BOTNET NODES</small><strong id="botnetNodes">0</strong></div><div><small>PROXY CHAINS</small><strong>7</strong></div><div><small>VPS SERVERS</small><strong>12</strong></div><div><small>DATA CENTERS</small><strong>3</strong></div></div>
+        </article>
+
+        <article class="panel-card system-card">
+          <div class="panel-heading"><span>SYSTEM STATUS</span><b>HEALTHY</b></div>
+          <div class="resource"><span>CPU</span><strong id="cpuValue">78%</strong><div><i style="width:78%"></i></div></div>
+          <div class="resource"><span>RAM</span><strong>62%</strong><div><i style="width:62%"></i></div></div>
+          <div class="resource"><span>NETWORK</span><strong>91%</strong><div><i style="width:91%"></i></div></div>
+          <div class="resource"><span>STORAGE</span><strong>55%</strong><div><i style="width:55%"></i></div></div>
+          <div class="resource"><span>BOTNET CAPACITY</span><strong id="botnetCapacity">0 / 150</strong><div><i id="botnetBar" style="width:0%"></i></div></div>
+        </article>
+
+        <article class="panel-card terminal-card">
+          <div class="panel-heading"><span>LIVE OPERATIONS</span><b>STREAMING</b></div>
+          <div class="terminal" id="log"><div>&gt; secure shell established...</div><div>&gt; awaiting operation...</div></div>
+          <div class="terminal-prompt">root@blacknet:~$ <span></span></div>
+        </article>
+
+        <article class="panel-card revenue-card">
+          <div class="panel-heading"><span>REVENUE STREAMS</span><b id="potential"></b></div>
+          <div class="revenue-row"><span>◈ PASSIVE INCOME</span><strong id="passiveIncome">$0/s</strong></div>
+          <div class="revenue-row"><span>◈ ACTIVE OPERATIONS</span><strong id="activeIncome">$0</strong></div>
+          <div class="revenue-row"><span>◈ CONTRACTS</span><strong id="contractIncome">$0</strong></div>
+          <div class="revenue-total"><span>TOTAL</span><strong id="totalIncome">$0/s</strong></div>
+        </article>
+
+        <article class="panel-card trace-card">
+          <div class="panel-heading"><span>TRACE LEVEL</span><b id="traceLabel">CLEAN</b></div>
+          <div class="trace-chart"><div class="chart-grid"></div><div class="trace-line"></div></div>
+          <div class="trace-scale"><span>0–20% CLEAN</span><span>21–40% SUSPICIOUS</span><span>41–60% MONITORED</span><span>61–80% HUNTED</span><span>81–100% CRITICAL</span></div>
+          <button class="clean-btn" id="cleanBtn">CLEAN LOGS <span>$10,000</span></button>
+        </article>
+
+        <article class="panel-card events-card">
+          <div class="panel-heading"><span>RECENT EVENTS</span><b>LIVE FEED</b></div>
+          <div class="event-list">
+            <div class="event warning-event"><span class="event-icon">!</span><div><strong>SECURITY SWEEP</strong><small>Global security monitoring active.</small></div><time>--:--</time></div>
+            <div class="event rare-event"><span class="event-icon">◇</span><div><strong>ZERO-DAY SCANNER</strong><small>Waiting for vulnerability event.</small></div><time>READY</time></div>
+            <div class="event info-event"><span class="event-icon">⌁</span><div><strong>NETWORK STATUS</strong><small>Infrastructure operating normally.</small></div><time>NOW</time></div>
+            <div class="event success-event"><span class="event-icon">+</span><div><strong>HARDWARE MARKET</strong><small>Rig upgrades available.</small></div><time>OPEN</time></div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <nav class="mobile-nav">
+      <button class="tab active" data-tab="dashboard">⌂<small>DASHBOARD</small></button>
+      <button class="tab" data-tab="targets">◉<small>TARGETS</small></button>
+      <button class="tab" data-tab="operations">⌁<small>OPS</small></button>
+      <button class="tab" data-tab="rigs">▣<small>RIGS</small></button>
+      <button class="tab" data-tab="contracts">◇<small>CONTRACTS</small></button>
+    </nav>
+  </section>
+
+  <div class="vuln" id="vuln">[ VULNERABILITY FOUND ]</div>
 </div>
 
 <script type="module">
@@ -92,6 +175,15 @@ document.getElementById('startBtn').addEventListener('click', ()=>{
   Game.init();
   setTimeout(()=> document.getElementById('mainMenu').hidden = true, 280);
 });
+
+setInterval(()=>{
+  const el=document.getElementById('serverTime');
+  if(el) el.textContent=new Date().toLocaleTimeString('en-GB',{hour12:false});
+},1000);
+
+document.getElementById('cleanBtn').addEventListener('click',()=>Game.cleanLogs());
+document.getElementById('reconBtn').addEventListener('click',()=>UI.log('recon scan started...'));
+document.getElementById('abortBtn').addEventListener('click',()=>UI.log('operation aborted // safe exit'));
 </script>
 </body>
 </html>
